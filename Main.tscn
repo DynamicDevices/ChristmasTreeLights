@@ -1,13 +1,23 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
-[ext_resource path="res://ChristmasTree.glb" type="PackedScene" id=2]
+[ext_resource path="res://ChristmasTree.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 0.1, 0.1, 0.1 )
 
 [sub_resource type="CubeMesh" id=2]
 size = Vector3( 0.1, 0.1, 0.1 )
+
+[sub_resource type="ProceduralSky" id=4]
+ground_bottom_color = Color( 0.069046, 0.0976562, 0.0701636, 1 )
+
+[sub_resource type="Environment" id=3]
+background_mode = 2
+background_sky = SubResource( 4 )
+background_energy = 1.2
+ambient_light_color = Color( 1, 1, 1, 1 )
+glow_enabled = true
 
 [node name="Main" type="Spatial"]
 script = ExtResource( 1 )
@@ -40,5 +50,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 3 )
+
 [node name="ChristmasTree" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.15546 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.155 )

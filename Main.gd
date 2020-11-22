@@ -77,7 +77,22 @@ func _on_LeftController_button_pressed(button: int) -> void:
 func _on_LeftController_button_release(button: int) -> void:
 	print ("Button release: " + str(button))
 
+var origMaterialOverride = null
+var oldTime = 0;
+
 func _process(delta: float) -> void:
+
+	if(OS.get_ticks_msec() - oldTime > 1000):
+		oldTime = OS.get_ticks_msec()
+
+		if(origMaterialOverride == null):
+			origMaterialOverride = $ChristmasTree/Sphere011.get_material_override()
+
+		if($ChristmasTree/Sphere011.get_material_override() == null):
+			$ChristmasTree/Sphere011.set_material_override(origMaterialOverride)
+		else:
+			$ChristmasTree/Sphere011.set_material_override(null)
+
 	var left_controller_id = 100
 	var thumbstick_x_axis_id = 2
 	var thumbstick_y_axis_id = 3
