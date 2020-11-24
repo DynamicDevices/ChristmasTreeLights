@@ -23,6 +23,9 @@ func _ready() -> void:
 	$ARVROrigin/LeftController.connect("button_pressed", self, "_on_LeftController_button_pressed")
 	$ARVROrigin/LeftController.connect("button_release", self, "_on_LeftController_button_release")
  
+	$Viewport/VideoPlayer.stream = load("res://videos/big-buck-bunny_trailer.webm")
+	$Viewport/VideoPlayer.play()
+	
 func _webxr_session_supported(session_mode: String, supported: bool) -> void:
 	if session_mode == 'immersive-vr':
 		vr_supported = supported
